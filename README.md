@@ -73,4 +73,4 @@ poetry run pytest
 
 ## License
 
-MIT
+See [LICENSE.md](LICENSE.md) for the full QuantumAI Open License (QAOL v1.0) terms.
