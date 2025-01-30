@@ -1,13 +1,14 @@
 # Core ML Dependencies
-torch==2.2.0
-transformers>=4.11.3
+torch>=2.0.0
+transformers>=4.31.0
 datasets
 accelerate
 bitsandbytes>=0.39.0
 
 # Quantum Computing
-pennylane==0.19.0  # Main quantum framework
+pennylane>=0.31.0  # Main quantum framework
 pennylane-lightning>=0.28.0  # Fast quantum simulator
+qiskit>=0.43.0
 
 # API and Web
 fastapi>=0.100.0  # Updated to support Pydantic 2.x
@@ -25,4 +26,5 @@ requests>=2.28.0
 peft>=0.4.0
 
 # Utilities
-python-dotenv==1.0.0
+python-dotenv>=1.0.0
+numpy>=1.24.0

@@ -1,54 +1,32 @@
-# Quantum AI API
+# Quantum AI
 
-A scalable, decentralized Quantum AI API that integrates classical AI with quantum computing capabilities.
+A quantum-enhanced AI system integrating quantum computing with machine learning.
 
 ## Features
 
-- Hybrid Quantum-Classical AI (LLM + Quantum Variational Layers)
-- FastAPI-powered Quantum API
-- Quantum state preparation and measurement
-- Text generation with quantum enhancement
+- Quantum circuit operations (Qiskit & PennyLane)
+- Quantum embeddings for enhanced AI tokenization
+- FastAPI-powered API for real-time quantum computations
+- Quantum-enhanced LLM fine-tuning pipeline
 
 ## Installation
 
-1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/QuantumAI.git
-cd QuantumAI
+poetry install
 ```
 
-2. Install dependencies:
+## Usage
+
+Start the API:
 ```bash
-pip install -r requirements.txt
+poetry run uvicorn quantum_ai.api.main:app --reload
 ```
 
-## Running the API
+## Architecture
 
-Start the API server:
-```bash
-python run.py
-```
-
-The API will be available at `http://localhost:8000`
-
-## API Endpoints
-
-- `GET /health` - Health check
-- `GET /quantum/bell-state` - Generate and measure a Bell state
-- `POST /quantum/generate` - Generate text using quantum-enhanced AI
-
-## Example Usage
-
-```python
-import requests
-
-# Generate quantum-enhanced text
-response = requests.post(
-    "http://localhost:8000/quantum/generate",
-    json={"prompt": "Hello quantum world!", "max_length": 50}
-)
-print(response.json())
-```
+- `quantum_ai/circuits/`: Quantum circuit implementations
+- `quantum_ai/api/`: FastAPI endpoints
+- `quantum_ai/embeddings/`: Quantum embedding modules
 
 ## License
 

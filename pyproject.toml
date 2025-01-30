@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "quantum-ai"
+version = "1.0.0"
+description = "Quantum-enhanced AI system integrating quantum computing with machine learning"
+authors = ["Your Name <your.email@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+qiskit = "^0.44.0"
+pennylane = "^0.31.0"
+fastapi = "^0.104.0"
+uvicorn = "^0.23.2"
+torch = "^2.1.0"
+transformers = "^4.34.0"
+numpy = "^1.24.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quantum-ai
+  labels:
+    app: quantum-ai
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: quantum-ai
+  template:
+    metadata:
+      labels:
+        app: quantum-ai
+    spec:
+      containers:
+      - name: quantum-ai
+        image: quantum-ai:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: QUANTUM_PROVIDERS
+          value: "ibm,rigetti,xanadu"
+        resources:
+          limits:
+            cpu: "2"
+            memory: "4Gi"
+          requests:
+            cpu: "1"
+            memory: "2Gi"
