@@ -1,0 +1,7 @@
+
+qiskit
+fastapi
+uvicorn
+pennylane
+transformers
+torch
