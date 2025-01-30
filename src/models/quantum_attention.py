@@ -21,13 +21,12 @@ class QFTAttentionHead(nn.Module):
         self.qnode = quantum_op
 
     def forward(self, x):
-        # x: [batch_size, seq_len, embed_dim]
         bs, seq_len, embed_dim = x.shape
         x_crop = x[:, :, :self.n_qubits].reshape(bs * seq_len, self.n_qubits)
 
         out_list = []
         for sample in x_crop:
-            out_list.append(self.qnode(sample, self.theta))
+            out_sample = self.qnode(sample, self.theta)
+            out_list.append(out_sample)
 
-        outputs = torch.stack(out_list).reshape(bs, seq_len, self.n_qubits)
-        return outputs
+        return torch.stack(out_list).reshape(bs, seq_len, self.n_qubits)

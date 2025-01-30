@@ -24,15 +24,17 @@ def load_qft_mistral(checkpoint="mistralai/Mistral-7B-v0.1", n_qubits=5):
     peft_model = get_peft_model(base_model, lora_config)
     return peft_model, tokenizer
 
-if __name__ == "__main__":
+def main():
     model, tokenizer = load_qft_mistral()
-    texts = ["Hello quantum world!", "QFT-based attention is exciting."]
-    inputs = tokenizer(texts, return_tensors="pt", padding=True).to("cuda")
+    texts = ["Hello quantum world!", "Quantum computing meets AI."]
+    inputs = tokenizer(texts, return_tensors="pt", padding=True, truncation=True).to("cuda")
 
     with torch.cuda.amp.autocast():
         out = model(**inputs, labels=inputs["input_ids"])
-    print("Loss:", out.loss.item())
+    print(f"Training loss: {out.loss.item()}")
 
-    # Here you would implement your training loop or use HF Trainer
-    # model.save_pretrained("quantum_mistral_ft")
-    # tokenizer.save_pretrained("quantum_mistral_ft")
+    model.save_pretrained("quantum_mistral_ft")
+    tokenizer.save_pretrained("quantum_mistral_ft")
+
+if __name__ == "__main__":
+    main()
