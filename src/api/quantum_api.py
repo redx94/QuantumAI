@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+from typing import List, Dict
 from ..quantum.core import QuantumCompute
 from ..ai.model import QuantumAI
 
@@ -12,6 +13,17 @@ quantum_ai = QuantumAI()
 class GenerateRequest(BaseModel):
     prompt: str
     max_length: int = 50
+    
+    model_config = {
+        "json_schema_extra": {
+            "examples": [
+                {
+                    "prompt": "Generate quantum enhanced text",
+                    "max_length": 50
+                }
+            ]
+        }
+    }
 
 @app.get("/health")
 async def health_check():
