@@ -3,7 +3,7 @@
 
 <div align="center">
 
-![QuantumAI Banner](https://via.placeholder.com/1000x300?text=QuantumAI+-+Bridging+AI+and+Quantum+Computing)  
+![QuantumAI Banner]()  
 
 [![License](https://img.shields.io/badge/License-QPL%20v1.1-red)](LICENSE.md)  
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue)](#prerequisites)  
