@@ -1,22 +1,22 @@
 [tool.poetry]
 name = "quantum_ai"
 version = "0.1.0"
-description = "Quantum-enhanced AI system integrating quantum computing with machine learning"
+description = "Quantum-enhanced machine learning framework"
 authors = ["Your Name <your.email@example.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.12"
-numpy = "^1.26.0"  # Pin to numpy 1.x
-pennylane = "^0.34.0"
-torch = "^2.1.0"
-fastapi = "^0.109.0"
-uvicorn = "^0.27.0"
+python = "^3.9"
+numpy = "1.23.5"
+pennylane = "0.31.0"
+torch = "^2.0.0"
+fastapi = "^0.103.0"
+uvicorn = "^0.23.0"
 qiskit = "^0.44.0"
 transformers = "^4.34.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.0"
-black = "^23.3.0"
+black = "^23.7.0"
 isort = "^5.12.0"
 flake8 = "^6.0.0"
 

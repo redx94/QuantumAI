@@ -1,9 +1,11 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import numpy as np
+import torch
 from ..core.circuits import quantum_embedding, create_variational_circuit
+from ..circuits.quantum_layer import QuantumLayer
 
-app = FastAPI(title="Quantum AI API")
+app = FastAPI(title="QuantumAI API")
 
 class EmbeddingRequest(BaseModel):
     data: list[float]
@@ -15,6 +17,11 @@ class CircuitRequest(BaseModel):
 class QuantumInput(BaseModel):
     data: list[float]
     circuit_type: str
+
+class PredictionRequest(BaseModel):
+    inputs: list[float]
+    n_qubits: int = 4
+    n_layers: int = 2
 
 @app.post("/quantum/embed")
 async def create_embedding(request: EmbeddingRequest):
@@ -42,5 +49,15 @@ async def quantum_compute(input_data: QuantumInput):
             circuit = VQC(n_qubits=len(input_data.data))
             result = circuit.run(np.array(input_data.data))
             return {"result": result.tolist()}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/predict")
+async def predict(request: PredictionRequest):
+    try:
+        model = QuantumLayer(request.n_qubits, request.n_layers)
+        inputs = torch.tensor(request.inputs).reshape(1, -1)
+        result = model(inputs)
+        return {"predictions": result.tolist()}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
