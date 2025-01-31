@@ -1,4 +1,4 @@
-# QuantumAI Open License (QAOL v1.0)
+p;# QuantumAI Open License (QAOL v1.0)
 
 Copyright (c) 2024 QuantumAI Contributors
 
