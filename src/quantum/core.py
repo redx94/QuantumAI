@@ -35,7 +35,13 @@ class QuantumCompute:
                 continue
         return None
 
-    @qml.qnode(device=dev)
+    @staticmethod
+    def optimize_circuit(circuit):
+        """Optimize quantum circuit"""
+        # Add circuit optimization logic
+        return circuit
+
+    @qml.qnode(dev)
     def vqc_circuit(self, params: np.ndarray, x: np.ndarray) -> np.ndarray:
         """Implements Variational Quantum Circuit for ML tasks"""
         # Encode input data
@@ -50,6 +56,12 @@ class QuantumCompute:
                 qml.CNOT(wires=[i, i + 1])
         
         return qml.state()
+
+    @qml.qnode(dev)
+    def execute(self, circuit):
+        """Execute single quantum circuit"""
+        result = circuit()
+        return qml.expval(qml.PauliZ(0))
 
     def quantum_embedding(self, data: np.ndarray) -> np.ndarray:
         """Generate quantum embeddings for input data"""
