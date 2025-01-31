@@ -1,0 +1,16 @@
+
+{
+  "bolt": {
+    "project": "my-project",
+    "version": "1.0.0",
+    "settings": {
+      "theme": "dark",
+      "language": "en"
+    }
+  },
+  "config": {
+    "apiUrl": "https://api.example.com",
+    "timeout": 5000,
+    "retryAttempts": 3
+  }
+}

@@ -2,7 +2,7 @@ from typing import Optional, List, Dict, Any
 import pennylane as qml
 import numpy as np
 from concurrent.futures import ThreadPoolExecutor
-from qiskit import QuantumCircuit, transpile
+from qiskit import QuantumCircuit, transpile, QuantumRegister, ClassicalRegister
 from qiskit.providers import Backend
 from abc import ABC, abstractmethod
 
@@ -24,6 +24,19 @@ class QuantumCompute:
         
         # Initialize quantum devices
         self.dev = qml.device("default.qubit", wires=n_qubits)
+        
+    def switch_provider(self, provider_index: int) -> bool:
+        """Switch to a different quantum provider"""
+        if 0 <= provider_index < len(self.providers):
+            self.active_provider = self.providers[provider_index]
+            return True
+        return False
+        
+    def execute_on_hardware(self, circuit: Any, **kwargs) -> Any:
+        """Execute circuit on real quantum hardware"""
+        if self.active_provider:
+            return self.active_provider.execute_circuit(circuit, **kwargs)
+        raise RuntimeError("No quantum provider available")
         
     def _initialize_provider(self) -> Optional[QPUProvider]:
         """Initialize the first available quantum provider"""
@@ -121,3 +134,26 @@ class QuantumCompute:
         with ThreadPoolExecutor() as executor:
             results = list(executor.map(lambda c: c(**kwargs), circuits))
         return results
+
+class QuantumCore:
+    def __init__(self, n_qubits: int):
+        self.n_qubits = n_qubits
+        self.qreg = QuantumRegister(n_qubits)
+        self.creg = ClassicalRegister(n_qubits)
+        self.circuit = QuantumCircuit(self.qreg, self.creg)
+        
+        # PennyLane quantum device
+        self.dev = qml.device('default.qubit', wires=n_qubits)
+
+    @qml.qnode(dev)
+    def quantum_layer(self, inputs, weights):
+        # Encode classical data
+        for i, x in enumerate(inputs):
+            qml.RX(x, wires=i)
+        
+        # Variational quantum circuit
+        for w in weights:
+            qml.CNOT(wires=[0, 1])
+            qml.RY(w, wires=0)
+        
+        return qml.expval(qml.PauliZ(0))

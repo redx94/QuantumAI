@@ -68,14 +68,7 @@ dev = qml.device("default.qubit", wires=5)
 
 @qml.qnode(dev)
 def quantum_circuit(inputs, weights):
-    # Encode inputs
-    for i in range(5):
-        qml.RY(inputs[i], wires=i)
-    
-    # Apply QFT
-    qml.QFT(wires=range(5))
-    
-    # Measure
+    // ...existing code...
     return [qml.expval(qml.PauliZ(i)) for i in range(5)]`}
                 </code>
               </pre>
@@ -99,7 +92,7 @@ def quantum_circuit(inputs, weights):
         self.dev = qml.device("default.qubit", wires=n_qubits)
         
     def forward(self, x):
-        # Apply quantum transformation
+        // ...existing code...
         return self.qnode(x, self.theta)`}
                     </code>
                   </pre>

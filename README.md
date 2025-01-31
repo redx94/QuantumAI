@@ -1,16 +1,40 @@
-# QuantumAI 🧠⚛️  
-> **The Future of AI is Quantum** — A cutting-edge framework combining **Quantum Computing** and **Artificial Intelligence** for unparalleled computational power.  
+# QuantumAI 🧠⚛️
+> The future of AI is Quantum - Core framework combining Quantum Computing and AI
 
 <div align="center">
 
-![QuantumAI Banner](docs/images/bannerQuantumAI_Banner.jpeg)  
+![QuantumAI Banner](assets/images/banner.jpeg)
 
-[![License](https://img.shields.io/badge/License-QPL%20v1.1-red)](LICENSE.md)  
-[![Python](https://img.shields.io/badge/Python-3.9%2B-blue)](#prerequisites)  
-[![Status](https://img.shields.io/badge/Status-Active-brightgreen)](#status)  
-[![Contributions](https://img.shields.io/badge/Contributions-Welcome-orange)](#contributing)  
+[![License](https://img.shields.io/badge/License-QPL%20v1.1-red)](LICENSE.md)
+[![Python](https://img.shields.io/badge/Python-3.9%2B-blue)](#prerequisites)
+[![Status](https://img.shields.io/badge/Status-Active-brightgreen)](#status)
 
 </div>
+
+## Directory Structure
+
+```
+app/
+    api/        # FastAPI endpoints
+    core/       # Core quantum computing logic
+    dao/        # Data access layer
+    models/     # Data models
+    services/   # Business logic
+    utils/      # Helpers and utilities
+contracts/      # Smart contracts for licensing
+docs/          # Documentation
+frontend/      # React-based UI
+notebooks/     # Jupyter notebooks
+scripts/       # Utility scripts  
+src/           # Core quantum-AI implementation
+test/          # Test suite
+```
+
+## Quick Links
+- [API Documentation](docs/api/README.md)
+- [Development Guide](docs/guides/development.md)
+- [Chat Interface](frontend/README.md)
+- [License System](contracts/README.md)
 
 ---
 
@@ -318,3 +342,55 @@ def verify_access(user_address: str) -> bool:
 ## License
 
 Commercial use requires a valid on-chain license. See [LICENSE.md](LICENSE.md).
+
+# QuantumAI
+
+A framework for integrating quantum computing with artificial intelligence.
+
+## Features
+
+- Quantum circuit implementation using Qiskit
+- Quantum-classical neural network integration
+- Parameterized quantum layers
+- PyTorch integration for hybrid quantum-classical models
+
+## Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/QuantumAI.git
+
+# Install dependencies
+poetry install
+```
+
+## Usage
+
+```python
+from quantumai.quantum.circuit import QuantumLayer
+from quantumai.ml.quantum_neural import QuantumNeuralNetwork
+
+# Create a quantum neural network
+model = QuantumNeuralNetwork(n_qubits=2, n_layers=3)
+
+# Use it for training/inference
+output = model(input_data)
+```
+
+## Testing
+
+```bash
+poetry run pytest
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

@@ -1,11 +1,11 @@
 import React from 'react';
 import { AlertTriangle, Atom, Brain, CloudLightning, Lock, Scale, Cpu, Database, Network, Zap, GitBranch, Microscope, Calculator, FlaskRound as Flask, Lightbulb, Code2, Boxes, Workflow, Binary, Infinity, Sparkles, Braces, Globe2 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, Routes, Route } from 'react-router-dom';
+import Documentation from './pages/Documentation';
 
-function App() {
+function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-indigo-950 to-purple-900 text-white">
-      <div className="container mx-auto px-4 py-16">
         {/* Hero Section with Quantum Animation */}
         <div className="text-center mb-16 relative">
           <div className="flex justify-center mb-4 relative h-32">
