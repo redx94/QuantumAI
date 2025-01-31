@@ -4,7 +4,7 @@
 
 QuantumAI seamlessly integrates quantum computing capabilities with modern AI techniques, offering unprecedented computational advantages for machine learning tasks. Perfect for researchers, developers, and organizations looking to explore the frontier of quantum-powered artificial intelligence.
 
-### Key Features
+## Key Features
 - 🚀 Quantum-enhanced neural networks
 - 🔄 Hybrid classical-quantum optimization
 - 🎯 Quantum feature mapping
