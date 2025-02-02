@@ -53,3 +53,4 @@ venv/
 ENV/
 .idea/
 .vscode/
+.venv
