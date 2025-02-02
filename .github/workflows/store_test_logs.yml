@@ -1,0 +1,13 @@
+name: Store Test Logs
+
+on: push
+
+jiob:
+  name: Run and Store Test Results
+  runs:
+    using: ubuntulatest
+   steps:
+    - name: Install Dependencies
+      run: pip install -r requirements.txt
+    - name: Run Unit Tests
+      run: python unittest /tests --log/results.log
