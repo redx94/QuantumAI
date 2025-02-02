@@ -1,0 +1,7 @@
+{
+  "quantum_cloud_providers": {
+    "IBM_Quantum": "https://cloud.ibmquantum.com",
+    "AWS_Braket": "https://cloud.awsbraket.com",
+    "Google_Quantum": "https://cloud.googlequantum.com"
+  },
+}
