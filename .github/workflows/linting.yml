@@ -1,0 +1,15 @@
+name: GitHub Actions - Flake8Linting
+
+on push:
+
+  runs:
+    using: your-language
+
+  steps:
+    - name: Run Flake8Linting
+      run: |
+
+      - name: Install and Run Flake8
+        run: |
+        - pip Install flake8
+        - flake8 quantum_ai/
