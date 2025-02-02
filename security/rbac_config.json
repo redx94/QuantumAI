@@ -1,0 +1,18 @@
+{
+  "roles": {
+    "admin": [
+      "read:all",
+      "write:all",
+      "execute:all"
+    ],
+    "user": [
+      "read:limited",
+      "write:none",
+      "execute:none"
+    ],
+    "guest": [
+      "read:limited",
+      "write:none"
+    ]
+  }
+}
