@@ -1,0 +1,8 @@
+version: 2.0
+
+updates:
+- package-ecosystem:
+- package-rub:devpack
+- package-npm:
+- package-json
+- poetry
