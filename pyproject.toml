@@ -13,7 +13,7 @@ torch = "^2.0.0"
 tensorflow = "^2.13.0"
 cirq = "^1.2.0"
 amazon-braket-sdk = "^1.55.0"
-numpy = "<I.24"
+numpy = "<1.24"
 pydantic = "^2.0.0"
 pycryptodome = "^3.17.0"
 
