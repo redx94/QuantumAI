@@ -1,0 +1,12 @@
+name: QuantumAI Testing Workflow
+
+on:
+  push:
+
+ r:³::
+  name: Run Tests
+   run:
+      - name: Install Dependencies
+        run: pip install -t requirements.txt
+      - name: Run unit tests
+        run: python unittest /tests
