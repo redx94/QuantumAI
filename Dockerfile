@@ -21,4 +21,4 @@ RUN poetry config virtualenvs.create false \
     && poetry install --no-dev --no-interaction --no-ansi
 
 # Run the API server
-CMD ["poetry", "run", "uvicorn", "quantum_ai.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["python", "-m", "uvicorn", "quantum_ai.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
