@@ -1,7 +1,7 @@
 from typing import List, Optional, Tuple
 import torch
 import torch.nn as nn
-from ..q_fabric import QuantumBackend, BackendType
+from q_fabric import QuantumBackend, BackendType
 
 class QuantumLayer(nn.Module):
     def __init__(self, n_qubits: int, n_layers: int):

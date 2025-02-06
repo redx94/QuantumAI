@@ -9,7 +9,7 @@ This document outlines the Continuous Integration and Continuous Deployment (CI/
 - **Secure Deployment**: Enforce code signing, audit logging, and secret management throughout the build and deploy process.
 
 ## Example CI/CD Workflow with GitHub Actions
-Create a workflow file at `.github/workflows/ci_cd_yml` with the following content:
+Create a workflow file at `.github/workflows/ci_cd.yml` with the following content:
 
 ```yaml
 name: QuantumAI CI/CD Pipeline
@@ -20,29 +20,26 @@ on:
   pull_request:
     branches: [ main ]
 
- 
-jobs: 
+jobs:
   build:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - name: Checkout Code
-        uses: actions/checkout/v2
+        uses: actions/checkout@v2
 
       - name: Set up Python
-
-        uses: actions/setup-python:/v2
+        uses: actions/setup-python@v2
         with:
           python-version: '3.9'
 
       - name: Install Dependencies
         run: |
-          pip -i --upgrade pip
+          pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: Run Unit & Integration Tests
         run: |
           pytest tests/
-
 
   deploy:
     needs: build
@@ -50,16 +47,27 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Checkout Code
-        uses: actions/checkout/v2
+        uses: actions/checkout@v2
 
-      - name: Build docker image
+      - name: Build Docker image
         run: |
-          docker build t quantumai:latest
+          docker build -t quantumai:latest .
 
       - name: Push Docker image
         run: |
-          docker tag quantumai:latest
+          docker tag quantumai:latest your-docker-repo/quantumai:latest
+          docker push your-docker-repo/quantumai:latest
 
       - name: Deploy to Kubernetes
         run: |
-          k8 apply -f deployment/k8s_deployment.yaml
+          kubectl apply -f deployment/k8s_deployment.yaml
+
+### Additional CI/CD Best Practices
+- **Code Signing**: Ensure all build artifacts are signed to verify their integrity.
+- **Audit Logging**: Implement comprehensive logging for all CI/CD activities.
+- **Secret Management**: Use secure methods to manage and store sensitive information like API keys and passwords.
+- **Environment Isolation**: Maintain separate environments for development, testing, and production to avoid conflicts.
+- **Automated Rollbacks**: Implement automated rollback mechanisms to revert to a stable state in case of deployment failures.
+- **Security Scanning**: Integrate security scanning tools to detect vulnerabilities in the codebase and dependencies.
+- **Performance Monitoring**: Monitor the performance of the deployed application and CI/CD pipeline to identify bottlenecks and optimize processes.
+- **Documentation**: Maintain up-to-date documentation for the CI/CD pipeline, including configuration details, troubleshooting guides, and best practices.

@@ -23,7 +23,7 @@ FROM python:3.9-slim
 WORKDIR /app
 
 # Install dependencies
-COPY requirements.tx `./app 
+COPY requirements.txt ./app
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
@@ -33,7 +33,7 @@ COPY . .
 EXPOSE 8080
 
 # Command to run the application
-CMT ["python", "main.py"]
+CMD ["python", "main.py"]
 ```
 
 ## Building & Running the Image
@@ -75,8 +75,28 @@ spec:
         env:
         - name: ENVIRONMENT
           value: "production"
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: quantumai-secrets
+              key: secret-key
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: quantumai-secrets
+              key: database-url
 ```
 
 ## Secure Deployment
 - Authorization and secret management via Kubernetes.
 - Separation of environment specific settings.
+
+### Additional Deployment Best Practices
+- **Environment Variables**: Use environment variables to manage configuration settings and secrets.
+- **Health Checks**: Implement health checks to monitor the application's status and ensure it is running correctly.
+- **Scaling**: Configure auto-scaling policies to handle varying loads and ensure high availability.
+- **Backup and Recovery**: Implement backup and recovery strategies to protect against data loss.
+- **Monitoring and Logging**: Integrate monitoring and logging tools to track application performance and troubleshoot issues.
+- **Security Audits**: Conduct regular security audits to identify and mitigate vulnerabilities.
+- **Compliance**: Ensure compliance with industry standards and regulations, such as GDPR and HIPAA.
+- **Documentation**: Maintain up-to-date documentation for the deployment process, including configuration details, troubleshooting guides, and best practices.

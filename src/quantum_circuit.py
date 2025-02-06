@@ -7,8 +7,8 @@ from qiskit.transpiler.passes import Optimize1qGates, CXCancellation
 
 class QuantumCircuitEnhanced:
     def __init__(self, num_qubits):
-        self.circuit = QuantumCircuit(num_qubits)
         self.num_qubits = num_qubits
+        self.circuit = QuantumCircuit(num_qubits, num_qubits) # Initialize with both qubits and classical bits
         self.noise_model = None
         self.optimization_level = 1
 
@@ -62,3 +62,7 @@ class QuantumCircuitEnhanced:
         for i in range(self.num_qubits-1):
             self.circuit.cx(i, i+1)
             self.circuit.measure(i, i)
+
+    def combine(self):
+        """Return the underlying qiskit circuit"""
+        return self.circuit
