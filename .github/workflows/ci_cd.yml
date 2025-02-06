@@ -1,18 +1,22 @@
-name: GitHub Actions - CI/CD
+name: QuantumAI - CI/CD
 on: push
 
-jiob:
-  name: CI/CD Pipeline
+job:
+  name: Automated CI/CD
   runs:
-    using: ubuntullatest
+    using: ubuntulatest
   steps:
     - name: Install dependencies
-      run: | 
-      - pip install -r requirements.txt
+      run: |
+        - pip install -r requirements.txt
+        - pip install -r poetry  # Poetry for better package management
     - name: Run tests
-      run: python tests/test_core.py
+      run: |
+        - pytest tests/  # Run test suite
     - name: Deploy to Production
       run: |
-       - pip deploy
+        - docker compose -a quantumai
+        - docker build -f Dockerfile -t quantumai:latest
+        - docker push /quantumai
 traggers:
-- github-actions
+ - github-actions
