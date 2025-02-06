@@ -392,52 +392,81 @@ Commercial use requires a valid on-chain license. See [LICENSE.md](LICENSE.md).
 
 # QuantumAI
 
-A framework for integrating quantum computing with artificial intelligence.
+A cutting-edge framework integrating Quantum Computing with Artificial Intelligence and AGI systems.
+
+## Project Structure
+
+```
+📂 q_fabric/      - Quantum computation modules and simulators
+📂 ai_engine/     - AI models and quantum-enhanced layers
+📂 security/      - Cryptographic and quantum-secure authentication
+📂 docs/          - Documentation and API references
+📂 tests/         - Unit tests for all components
+```
 
 ## Features
 
-- Quantum circuit implementation using Qiskit
-- Quantum-classical neural network integration
-- Parameterized quantum layers
-- PyTorch integration for hybrid quantum-classical models
+- Universal quantum backend wrapper (Qiskit, PennyLane, Cirq, Braket)
+- Quantum-enhanced neural networks
+- Post-quantum cryptography
+- AGI governance system
+- Real-time quantum hardware execution
+- Quantum-safe model protection
 
 ## Installation
 
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/QuantumAI.git
-
-# Install dependencies
-poetry install
+pip install quantum-ai
 ```
 
-## Usage
+## Quick Start
 
 ```python
-from quantumai.quantum.circuit import QuantumLayer
-from quantumai.ml.quantum_neural import QuantumNeuralNetwork
+from quantum_ai import QuantumNeuralNetwork
+from quantum_ai.security import QUANTUM_SHIELDWALL
 
-# Create a quantum neural network
-model = QuantumNeuralNetwork(n_qubits=2, n_layers=3)
-
-# Use it for training/inference
-output = model(input_data)
+# Initialize a quantum-enhanced neural network
+qnn = QuantumNeuralNetwork()
 ```
 
-## Testing
+## Documentation
 
-```bash
-poetry run pytest
-```
+Visit [docs/](docs/) for complete documentation.
 
-## Contributing
+## Security
 
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+All AI models are protected by QUANTUM_SHIELDWALL™ technology.
 
 ## License
 
+<<<<<<< HEAD
 See the LICENSE file for details.
+=======
+MIT License
+
+## Development Best Practices
+
+### Code Style
+- Use type hints for all Python code
+- Follow PEP 8 guidelines
+- Document all public functions and classes
+- Use meaningful variable names
+
+### Testing Standards
+- Write unit tests for all new features
+- Maintain minimum 80% code coverage
+- Include integration tests for API endpoints
+- Test quantum circuits with simulation backends
+
+### Performance Guidelines
+- Profile quantum circuits before deployment
+- Optimize classical-quantum interfaces
+- Minimize quantum gate depth where possible
+- Cache intermediate results when appropriate
+
+### Security Requirements
+- All PRs must pass security scan
+- Implement access controls for quantum resources
+- Follow quantum-safe cryptography practices
+- Regular security audits required
+>>>>>>> 5c96586 (refactoring)

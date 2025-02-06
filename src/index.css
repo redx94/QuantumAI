@@ -2,46 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Enhanced quantum animations */
 @keyframes quantum-pulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 0.4;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 0.4; filter: hue-rotate(180deg); }
+  100% { transform: scale(1); opacity: 0.8; }
 }
 
 @keyframes quantum-orbit {
-  0% {
-    transform: rotate(0deg) translateX(50px) rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg) translateX(50px) rotate(-360deg);
-  }
+  0% { transform: rotate(0deg) translateX(50px) rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) translateX(50px) rotate(-180deg) scale(1.1); }
+  100% { transform: rotate(360deg) translateX(50px) rotate(-360deg) scale(1); }
 }
 
+/* Enhanced utility classes */
 .quantum-pulse {
-  animation: quantum-pulse 3s infinite ease-in-out;
+  animation: quantum-pulse 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .quantum-orbit {
-  animation: quantum-orbit 8s infinite linear;
+  animation: quantum-orbit 8s infinite cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .quantum-orbit-reverse {
-  animation: quantum-orbit 12s infinite linear reverse;
+  animation: quantum-orbit 12s infinite cubic-bezier(0.4, 0, 0.2, 1) reverse;
 }
 
 .quantum-orbit-slow {
-  animation: quantum-orbit 15s infinite linear;
+  animation: quantum-orbit 15s infinite cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Enhanced gradient utilities */
 .gradient-text {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400;
+  background-size: 200% 200%;
+  animation: gradient-shift 8s infinite linear;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* New quantum theme utilities */
+.quantum-card {
+  @apply backdrop-blur-lg bg-opacity-20 rounded-xl border border-opacity-20;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+}
+
+.quantum-text-glow {
+  text-shadow: 0 0 10px rgba(66, 153, 225, 0.5);
 }
